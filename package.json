@@ -1,0 +1,14 @@
+{
+  "name": "js-tweet",
+  "version": "0.0.1",
+  "description": "Playing with Twitter API",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Assaf Sapir",
+  "license": "MIT",
+  "dependencies": {
+    "twit": "^2.2.9"
+  }
+}
