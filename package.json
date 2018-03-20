@@ -2,10 +2,11 @@
   "name": "js-tweet",
   "version": "0.0.1",
   "description": "Playing with Twitter API",
+  "repository": "https://github.com/meijin007/twitter-play",
   "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib",
+    "build": "eslint src/**/* && babel src -d lib",
     "eslint": "eslint src/**/* --fix"
   },
   "author": "Assaf Sapir",

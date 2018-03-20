@@ -44,4 +44,4 @@ const params = {
     exclude_replies: true
 };
 
-getTweets(params);
+exports = getTweets(params);
