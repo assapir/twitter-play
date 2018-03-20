@@ -5,9 +5,9 @@
   "repository": "https://github.com/meijin007/twitter-play",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "eslint src/**/* && babel src -d lib",
-    "eslint": "eslint src/**/* --fix"
+    "test": "mocha",
+    "build": "eslint src/**/* test/**/* && babel src -d lib",
+    "eslint": "eslint src/**/* test/**/* --fix"
   },
   "author": "Assaf Sapir",
   "license": "MIT",
@@ -17,6 +17,8 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^4.19.0"
+    "chai": "^4.1.2",
+    "eslint": "^4.19.0",
+    "mocha": "^5.0.4"
   }
 }
