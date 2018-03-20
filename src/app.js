@@ -16,9 +16,9 @@ const twit_instance = new Twit(getTokens());
 async function getTweets(params) {
     let result = await twit_instance.get('statuses/user_timeline', params);
     try {
-        if (result.resp.statusCode !== 200) {
+        if (result.resp.statusCode !== 200) 
             throw new Error(`Well... ${result.resp.statusMessage}`);
-        }
+        
         let mostFavTweet = 0;
         let maxFav = 0;
         result.data.forEach(element => {
@@ -32,7 +32,7 @@ async function getTweets(params) {
         console.log(error);
     }
 
-};
+}
 
 const firstParams = {
     screen_name: 'meijin007',

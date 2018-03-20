@@ -1,0 +1,32 @@
+{
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "eqeqeq": [
+            "error",
+            "allow-null"
+        ],
+        "curly": [
+            "error",
+            "multi"
+        ],
+        "no-console": [
+            "off"
+        ],
+        "strict": [
+            "error"
+        ],
+        "dot-notation": [
+            "error",
+            {
+                "allowKeywords": false
+            }
+        ]
+    }
+}
