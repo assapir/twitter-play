@@ -2,7 +2,6 @@
 
 function getTokens() {
     const fs = require('fs');
-     // This is not async for reading the cred before calling the API
     try {
         const content = fs.readFileSync('cred.json', 'utf8');
         return JSON.parse(content);
