@@ -1,7 +1,5 @@
 'use strict';
 
-require(`babel-polyfill`); // need for babel app
-
 const assert = require(`assert`);
 const app = require(`../lib/app`).default;
 
