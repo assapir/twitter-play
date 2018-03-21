@@ -7,6 +7,3 @@ node_js:
 script:
   - "npm run build"
   - "npm run eslint"
-notifications:
-  on_success: change
-  on_failure: always
