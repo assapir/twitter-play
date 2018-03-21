@@ -1,13 +1,11 @@
-'use strict';
-
-const Twit = require('twit');
-const fs = require('fs');
-const promisify = require('util').promisify;
+import Twit from 'twit';
+import fs from 'fs';
+import {promisify} from 'util';
 
 async function getTokens() {
     const readFile = promisify(fs.readFile);
     try {
-        const content = await readFile('cred.json', 'utf8');
+        const content = await readFile(`cred.json`, `utf8`);
         return JSON.parse(content);
     } catch (error) {
         console.log(error);
@@ -16,19 +14,19 @@ async function getTokens() {
 
 async function getResult(params) {
     const twit_instance = new Twit(await getTokens());
-    return await twit_instance.get('statuses/user_timeline', params);
+    return await twit_instance.get(`statuses/user_timeline`, params);
 }
 
-let e = {};
-e.defaultParams = {
-    screen_name: 'meijin007',
+let exp = {};
+exp.defaultParams = {
+    screen_name: `meijin007`,
     count: 200,
     exclude_replies: true
 };
 
-e.getTweets = async function (params) {
+exp.getTweets = async function (params) {
     if (params === undefined)
-        params = e.defaultParams;
+        params = exp.defaultParams;
 
     try {
         const result = await getResult(params);
@@ -49,4 +47,4 @@ e.getTweets = async function (params) {
     }
 };
 
-exports.default = e;
+export default exp;

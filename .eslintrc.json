@@ -1,11 +1,10 @@
 {
     "env": {
         "node": true,
-        "es6": true,
-        "mocha": true
+        "es6": true
     },
     "parserOptions": {
-        "ecmaVersion": 2017
+        "ecmaVersion": 7
     },
     "extends": "eslint:recommended",
     "rules": {
@@ -32,6 +31,13 @@
         "semi": [
             "error",
             "always"
+        ],
+        "quotes": [
+            "error",
+            "backtick",
+            {
+                "avoidEscape": true
+            }
         ]
     }
 }
