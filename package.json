@@ -6,8 +6,8 @@
   "main": "src/app.js",
   "scripts": {
     "test": "mocha",
-    "build": "eslint src/**/* test/**/* && babel src -d lib",
-    "eslint": "eslint src/**/* test/**/* --fix"
+    "build": "babel src -d lib",
+    "eslint": "eslint -c src/**/*.js test/**/*.js --fix"
   },
   "author": "Assaf Sapir",
   "license": "MIT",
