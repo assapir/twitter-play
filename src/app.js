@@ -33,19 +33,20 @@ exp.getTweets = async function(params) {
         if (result.resp.statusCode !== 200)
             throw new Error(`Well... ${result.resp.statusMessage}`);
 
-        let mostFavTweet = 0;
-        let maxFav = 0;
-        let ret = {};
+        let ret = {
+            mostFavTweet: {},
+            maxFav: 0
+        };
         result.data.forEach(element => {
-            if (element.favorite_count > maxFav) {
+            if (element.favorite_count > ret.maxFav) {
                 ret.maxFav = element.favorite_count;
                 ret.mostFavTweet = element;
             }
         });
-        console.log(`Most favorite tweet:\n"${mostFavTweet.text}" \nFavorite count: ${maxFav}`);
+        //console.log(`Most favorite tweet:\n"${mostFavTweet.text}" \nFavorite count: ${maxFav}`);
         return ret;
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return error;
     }
 };

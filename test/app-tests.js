@@ -19,7 +19,7 @@ describe(`Module export`, () => {
 
 describe(`getTweets function`, () => {
     it(`Have default parameters`, () => {
-        sinon.mock(`getResult`).withExactArgs(app.defaultParams);
+        sinon.mock(`getResult`).withExactArgs(app.defaultParams).returns({});
         app.getTweets();
     });
 });
