@@ -1,6 +1,6 @@
 import Twit from 'twit';
 import fs from 'fs';
-import {promisify} from 'util';
+import { promisify } from 'util';
 
 async function getTokens() {
     const readFile = promisify(fs.readFile);
@@ -24,7 +24,7 @@ exp.defaultParams = {
     exclude_replies: true
 };
 
-exp.getTweets = async function (params) {
+exp.getTweets = async function(params) {
     if (params === undefined)
         params = exp.defaultParams;
 
@@ -35,15 +35,18 @@ exp.getTweets = async function (params) {
 
         let mostFavTweet = 0;
         let maxFav = 0;
+        let ret = {};
         result.data.forEach(element => {
             if (element.favorite_count > maxFav) {
-                maxFav = element.favorite_count;
-                mostFavTweet = element;
+                ret.maxFav = element.favorite_count;
+                ret.mostFavTweet = element;
             }
         });
         console.log(`Most favorite tweet:\n"${mostFavTweet.text}" \nFavorite count: ${maxFav}`);
+        return ret;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 

@@ -1,12 +1,13 @@
 'use strict';
 
-const assert = require(`assert`);
-const app = require(`../lib/app`).default;
+const expect   = require(`chai`).expect,
+      app = require(`../lib/app`).default;
 
 describe(`Module export`, () => {
     it(`Things are exported`, () => {
-        assert.equal(typeof app, `object`);
-        assert.equal(typeof app.getTweets, `function`);
-        assert.equal(typeof app.defaultParams, `object`);
+        expect(app).to.be.a(`object`);
+        expect(app.getTweets).to.be.a(`function`);
+        expect(app.defaultParams).to.be.a(`object`);
     });
 });
+
