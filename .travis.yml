@@ -8,3 +8,6 @@ script:
   - npm run build
   - npm run eslint
   - npm test
+notifications:
+  email:
+    - meijin007@gmail.com
