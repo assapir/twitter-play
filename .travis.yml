@@ -3,7 +3,7 @@ os:
   - osx
   - linux
 node_js:
-  - node
+  - stable
 script:
   - npm run build
   - npm run eslint
