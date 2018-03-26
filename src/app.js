@@ -2,7 +2,11 @@ import Twit from 'twit';
 import fs from 'fs';
 import { promisify } from 'util';
 
-async function getTokens() {
+let exp = {
+    t: {},
+};
+
+exp.t.getTokens = async function() {
     const readFile = promisify(fs.readFile);
     try {
         const content = await readFile(`cred.json`, `utf8`);
@@ -10,13 +14,10 @@ async function getTokens() {
     } catch (error) {
         console.log(error);
     }
-}
-let exp = {
-    t: {},
 };
 
 exp.t.getResult = async function(params) {
-    const twit_instance = new Twit(await getTokens());
+    const twit_instance = new Twit(await exp.t.getTokens());
     return await twit_instance.get(`statuses/user_timeline`, params);
 };
 
@@ -35,7 +36,7 @@ exp.getTweets = async function(params) {
         if (result.resp.statusCode !== 200)
             throw new Error(`Well... ${result.resp.statusMessage}`);
 
-        let ret = {
+        const ret = {
             mostFavTweet: {},
             maxFav: 0,
         };
