@@ -4,27 +4,27 @@ const sinon = require(`sinon`),
     expect = require(`chai`).expect,
     app = require(`../lib/app`).default;
 
-describe(`Module export`, () => {
-    it(`Things are exported`, () => {
+describe(`Module export`, function() {
+    it(`Things are exported`, function() {
         expect(app).to.be.an(`object`);
         expect(app.getTweets).to.be.a(`function`);
         expect(app.defaultParams).to.be.an(`object`);
     });
-    it(`Not responed to unexported function`, () => {
+    it(`Not responed to unexported function`, function() {
         expect(app).itself.to.respondTo(`getTweets`).
             but.not.respondTo(`getTokens`).
             and.not.respondTo(`getResult`);
     });
 });
 
-describe(`getTweets function`, () => {
-    it(`Pass default parameters to getResault`, async () => {
+describe(`getTweets function`, function() {
+    it(`Pass default parameters to getResault`, async function() {
         const mock = sinon.mock(app.t);
         mock.expects(`getResult`).once().withExactArgs(app.defaultParams).returns({}); 
         await app.getTweets();
         mock.verify();
     });
-    it(`Pass passed parameters to getResault`, async () => {
+    it(`Pass passed parameters to getResault`, async function() {
         const mock = sinon.mock(app.t);
         const params = {
             screen_name: `aa`,
