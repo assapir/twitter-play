@@ -18,8 +18,22 @@ describe(`Module export`, () => {
 });
 
 describe(`getTweets function`, () => {
-    it(`Have default parameters`, () => {
-        sinon.mock(`getResult`).withExactArgs(app.defaultParams).returns({});
-        app.getTweets();
+    it(`Pass default parameters to getResault`, async () => {
+        const mock = sinon.mock(app.t);
+        mock.expects(`getResult`).once().withExactArgs(app.defaultParams).returns({}); 
+        await app.getTweets();
+        mock.verify();
+    });
+    it(`Pass passed parameters to getResault`, async () => {
+        const mock = sinon.mock(app.t);
+        const params = {
+            screen_name: `aa`,
+            count: 1,
+            exclude_replies: false,
+        };
+
+        mock.expects(`getResult`).once().withExactArgs(params).returns({}); 
+        await app.getTweets(params);
+        mock.verify();
     });
 });
