@@ -3,8 +3,10 @@ import { logger } from './logger';
 
 const app = express();
 
-app.listen(3000, () => {
-    logger.info(`Starting express on port 3000`);
+const port = 3000;
+
+app.listen(port, () => {
+    logger.info(`Starting express on port ${port}`);
 });
 
 app.get(`/`, (req, res) => {
@@ -19,7 +21,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get(`*`, (req, res) => {
-    logger.info(`Global fallback - sending 404`);
+    logger.warn(`Global fallback - sending 404`);
     res.status(404);
     res.send(`${req.path} Not found!`);
 });
