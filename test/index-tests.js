@@ -2,7 +2,13 @@
 
 const request = require(`supertest`),
     expect = require(`chai`).expect,
+    logger = require(`../lib/logger`).logger,
     app = require(`../lib/index`);
+
+before(function() {
+    for (const transport of logger.transports)
+        transport.silent = true;
+});
 
 describe(`Express tests`, function() {
     describe(`GET tests`, function() {
@@ -26,4 +32,9 @@ describe(`Express tests`, function() {
             });
         });
     });
+});
+
+after(function() {
+    for (const transport of logger.transports)
+        transport.silent = true;
 });

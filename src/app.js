@@ -42,12 +42,11 @@ exp.getTweets = async function(params) {
             mostFavTweet: {},
             maxFav: 0,
         };
-        result.data.forEach(element => {
+        for (const element of result.data) 
             if (element.favorite_count > ret.maxFav) {
                 ret.maxFav = element.favorite_count;
                 ret.mostFavTweet = element;
             }
-        });
         logger.debug(`Most favorite tweet:\n"${ret.mostFavTweet.text}" \nFavorite count: ${ret.maxFav}`);
         return ret;
     } catch (error) {

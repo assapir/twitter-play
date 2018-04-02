@@ -2,8 +2,13 @@
 
 const sinon = require(`sinon`),
     expect = require(`chai`).expect,
+    logger = require(`../lib/logger`).logger,
     app = require(`../lib/app`).exp;
 
+before(function() {
+    for (const transport of logger.transports)
+        transport.silent = true;
+});
 
 describe(`Module tests`, function() {
     describe(`Module export`, function() {
@@ -82,4 +87,9 @@ describe(`Module tests`, function() {
             expect(ret.mostFavTweet).to.deep.equal(tweetElement);
         });
     });
+});
+
+after(function() {
+    for (const transport of logger.transports)
+        transport.silent = true;
 });
