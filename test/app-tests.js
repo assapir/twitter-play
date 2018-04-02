@@ -1,7 +1,5 @@
 'use strict';
 
-process.env.NODE_ENV = `test`;
-
 const sinon = require(`sinon`),
     expect = require(`chai`).expect,
     app = require(`../lib/app`).exp;
