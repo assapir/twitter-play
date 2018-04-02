@@ -1,23 +1,25 @@
 import Twit from 'twit';
 import fs from 'fs';
 import { promisify } from 'util';
+import { logger } from './logger';
 
-let exp = {
+export let exp = {
     t: {},
 };
 
-exp.t.getTokens = async function() {
+async function getTokens() {
     const readFile = promisify(fs.readFile);
     try {
         const content = await readFile(`cred.json`, `utf8`);
         return JSON.parse(content);
     } catch (error) {
-        console.log(error);
+        logger.error(error.message);
+        throw error;
     }
-};
+}
 
 exp.t.getResult = async function(params) {
-    const twit_instance = new Twit(await exp.t.getTokens());
+    const twit_instance = new Twit(await getTokens());
     return await twit_instance.get(`statuses/user_timeline`, params);
 };
 
@@ -46,12 +48,13 @@ exp.getTweets = async function(params) {
                 ret.mostFavTweet = element;
             }
         });
-        //console.log(`Most favorite tweet:\n"${mostFavTweet.text}" \nFavorite count: ${maxFav}`);
+        logger.debug(`Most favorite tweet:\n"${ret.mostFavTweet.text}" \nFavorite count: ${ret.maxFav}`);
         return ret;
     } catch (error) {
-        //console.log(error);
+        logger.error(error.message);
         return error;
     }
 };
 
-export default exp;
+if (typeof require !== `undefined` && require.main === module)
+    exp.getTweets();

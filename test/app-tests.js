@@ -2,7 +2,8 @@
 
 const sinon = require(`sinon`),
     expect = require(`chai`).expect,
-    app = require(`../lib/app`).default;
+    app = require(`../lib/app`).exp;
+
 
 describe(`Module tests`, function() {
     describe(`Module export`, function() {
