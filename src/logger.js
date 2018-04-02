@@ -11,7 +11,7 @@ export const logger = winston.createLogger({
     transports: [
         new winston.transports.Console({ 
             format: coloredFormat,
-            silent: process.env.NODE_ENV !== `test`,
+            silent: process.env.NODE_ENV === `test`,
          }),
     ],
     level: `silly`,
