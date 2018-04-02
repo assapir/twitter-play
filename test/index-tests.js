@@ -1,18 +1,14 @@
 'use strict';
 
+process.env.NODE_ENV = `test`;
+
 const request = require(`supertest`),
     expect = require(`chai`).expect,
-    logger = require(`../lib/logger`).logger,
     app = require(`../lib/index`);
-
-before(function() {
-    for (const transport of logger.transports)
-        transport.silent = true;
-});
 
 describe(`Express tests`, function() {
     describe(`GET tests`, function() {
-        it(`Will retun 200 on /`, function(done){
+        it(`Will retunprocess.env.NODE_ENV = 'test'; 200 on /`, function(done){
             request(app)
             .get(`/`)
             .end((err, res) => {
@@ -32,9 +28,4 @@ describe(`Express tests`, function() {
             });
         });
     });
-});
-
-after(function() {
-    for (const transport of logger.transports)
-        transport.silent = true;
 });

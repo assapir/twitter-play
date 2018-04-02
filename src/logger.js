@@ -9,7 +9,10 @@ const coloredFormat = format.combine(
 );
 export const logger = winston.createLogger({
     transports: [
-        new winston.transports.Console({ format: coloredFormat }),
+        new winston.transports.Console({ 
+            format: coloredFormat,
+            silent: process.env.NODE_ENV !== `test`,
+         }),
     ],
     level: `silly`,
 });
