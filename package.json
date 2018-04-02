@@ -5,14 +5,15 @@
   "repository": "https://github.com/meijin007/twitter-play",
   "main": "src/app.js",
   "scripts": {
-    "test": "nyc -r=lcov mocha",
-    "build": "babel src -d lib",
+    "test": "nyc -r=lcov mocha --exit",
+    "build": "babel src -d lib -s",
     "eslint": "eslint src/**/*.js test/**/*.js --fix"
   },
   "author": "Assaf Sapir",
   "license": "MIT",
   "dependencies": {
-    "twit": "^2.2.9"
+    "twit": "^2.2.9",
+    "winston": "^3.0.0-rc3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -25,6 +26,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.0.4",
     "nyc": "^11.6.0",
-    "sinon": "^4.4.8"
+    "sinon": "^4.4.8",
+    "supertest": "^3.0.0"
   }
 }

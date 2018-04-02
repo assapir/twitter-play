@@ -5,6 +5,7 @@
             "name": "Run Tests",
             "type": "node",
             "request": "launch",
+            "preLaunchTask": "build",
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "args": [
@@ -16,6 +17,12 @@
             ],
             "internalConsoleOptions": "openOnSessionStart",
             "sourceMaps": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Express",
+            "program": "${workspaceRoot}/lib/index.js"
         }
     ]
 }
