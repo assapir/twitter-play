@@ -8,7 +8,7 @@ const request = require(`supertest`),
 
 describe(`Express tests`, function() {
     describe(`GET tests`, function() {
-        it(`Will retunprocess.env.NODE_ENV = 'test'; 200 on /`, function(done){
+        it(`Will return 200 on /`, function(done){
             request(app)
             .get(`/`)
             .end((err, res) => {
